@@ -1,38 +1,441 @@
-.App {
-  text-align: center;
+/* Global Styles */
+:root {
+  --primary-color: #2563eb;
+  --secondary-color: #1e40af;
+  --background-light: #f8fafc;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Layout */
+.main-content {
+  min-height: calc(100vh - 160px);
+}
+
+/* Navbar */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar-brand small {
+  font-weight: 400;
+  color: white;
+  opacity: 0.8;
+  line-height: 1.2;
+}
+
+@media (max-width: 768px) {
+  .navbar-brand small {
+    font-size: 0.65rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
+  padding: 6rem 0;
+}
+
+.hero-animation {
+  position: relative;
+  min-height: 400px;
+}
+
+.ai-visualization {
+  background: rgba(37, 99, 235, 0.1);
+  border-radius: 1rem;
+  height: 100%;
+}
+
+/* Cards */
+.stat-card, .feature-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover, .feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Footer */
+.footer {
+  background-color: var(--text-dark);
+}
+
+.social-links a {
+  transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 4rem 0;
+  }
+  
+  .hero-animation {
+    min-height: 300px;
+    margin-top: 2rem;
+  }
+  
+  .stat-card, .feature-card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.neural-network-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Demo Page */
+.demo-page {
+  background-color: var(--background-light);
+}
+
+.attack-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.attack-card.selected {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.attack-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.example-prompt {
+  background-color: var(--background-light);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+}
+
+.example-prompt code {
+  color: var(--primary-color);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+}
+
+.demo-response {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-height: 300px;
+}
+
+.response-box {
+  background-color: var(--background-light);
+  border-left: 4px solid var(--primary-color);
+}
+
+.loading-spinner {
+  padding: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .attack-vectors {
+    margin-bottom: 2rem;
+  }
+  
+  .demo-response {
+    min-height: 200px;
+  }
+}
+
+/* Methodology Page */
+.methodology-page {
+  background-color: var(--background-light);
+}
+
+.category-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.category-card.active {
+  border: 2px solid var(--primary-color);
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.category-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.methodology-details {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.steps-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.steps-timeline::before {
+  content: '';
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: var(--primary-color);
+  opacity: 0.2;
+}
+
+.step-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.step-number {
+  position: absolute;
+  left: -2rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.step-content {
+  background-color: var(--background-light);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+}
+
+.code-example pre {
+  background-color: var(--background-light);
+  border-left: 4px solid var(--primary-color);
+}
+
+.code-example code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .category-selector {
+    margin-bottom: 2rem;
+  }
+  
+  .steps-timeline {
+    padding-left: 1.5rem;
+  }
+  
+  .step-number {
+    left: -1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Findings Page */
+.findings-page {
+  background-color: var(--background-light);
+}
+
+.timeframe-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.chart-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.finding-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.finding-card:hover {
+  transform: translateY(-5px);
+}
+
+.finding-meta {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+/* Chart Customization */
+.chart-container {
+  position: relative;
+  height: 300px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chart-card {
+    margin-bottom: 1rem;
+  }
+  
+  .finding-card {
+    margin-bottom: 1rem;
+  }
+  
+  .timeframe-selector .btn-group {
+    width: 100%;
+  }
+  
+  .timeframe-selector .btn {
+    flex: 1;
+  }
+}
+
+/* About Page */
+.about-page {
+  background-color: var(--background-light);
+}
+
+.about-card, .contact-card, .info-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.expertise ul li {
+  margin-bottom: 0.5rem;
+  color: var(--text-dark);
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.social-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: var(--text-dark);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.social-link:hover {
+  color: var(--primary-color);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.social-link span {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.contact-form .form-control {
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  padding: 0.75rem;
+}
+
+.contact-form .form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.info-card {
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .social-links {
+    justify-content: center;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .about-card, .contact-card {
+    margin-bottom: 2rem;
+  }
+  
+  .info-card {
+    margin-bottom: 1rem;
   }
 }
